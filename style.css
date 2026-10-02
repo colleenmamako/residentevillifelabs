@@ -1,0 +1,654 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; sans-serif;
+}
+
+
+h1 {
+    font-family: 'Special Elite', system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #1a0000; 
+}
+
+
+.audio-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999; 
+    padding: 10px 20px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.audio-btn:hover {
+    background: white;
+    color: black;
+}
+
+
+#hero {
+    position: relative; 
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2b0000, #5c0000, #000);
+}
+
+
+#hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0; /* ✅ Video at bottom */
+}
+
+
+#hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1; /* ✅ Overlay on top of video */
+}
+
+
+.content {
+    position: relative;
+    z-index: 2; /* ✅ ON TOP of video & overlay! */
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.content p {
+    font-size: 40px;
+    margin-bottom: 2rem;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: #e62424;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #b31c1c;
+}
+
+
+.section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    color: white;
+}
+.section h2 {
+    color: #e62424;
+    margin-bottom: 20px;
+}
+
+/* ——— CARD SLIDER CONTAINER ——— */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.slider-wrapper {
+  position: relative;
+}
+
+/* ——— SLIDE BUTTONS (PREV / NEXT) ——— */
+.slide-button {
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  border: none;
+  background: #e64a4a;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.slide-button:hover {
+  background: #c03a3a;
+}
+
+#prev-slide {
+  left: -25px;
+  display: none;
+}
+
+#next-slide {
+  right: -25px;
+}
+
+/* ——— CARD LIST ——— */
+.card-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scrollbar-width: none;
+}
+
+.card-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* ——— INDIVIDUAL CARD ——— */
+.card-item {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 20px;
+  background: linear-gradient(135deg, #000 , #1a0000);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+}
+
+/* ——— CHARACTER IMAGE ——— */
+.user-image {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 4px solid #e64a4a;
+  box-shadow: 0 0 12px rgba(230, 74, 74, 0.4);
+}
+
+/* ——— TEXT STYLES ——— */
+.user-name {
+  font-size: 1.25rem;
+  margin: 10px 0;
+  color: #ff6b6b;
+  font-family: 'Special Elite', system-ui;
+}
+
+.user-description {
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+/* ——— READ MORE BUTTON ——— */
+.read-more-btn {
+  padding: 10px 28px;
+  background: #e64a4a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background: #c03a3a;
+  transform: scale(1.05);
+}
+
+/* ——— SCROLLBAR / TRACK ——— */
+.slider-scrollbar {
+  height: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.scrollbar-track {
+  height: 4px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  position: relative;
+}
+
+.scrollbar-thumb {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  background: #e64a4a;
+  border-radius: inherit;
+  cursor: grab;
+}
+
+/* Center the whole card section */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+/* Center the card list */
+.card-list {
+  justify-content: center;
+  flex-wrap: wrap; /* keeps cards nice on small screens too */
+  padding: 0;
+  margin: 0;
+}
+
+/* Center text inside each card */
+.card-item {
+  text-align: center;
+}
+
+/* Also fix your intro text to be centered */
+.section {
+  text-align: center;
+}
+
+/* ——— OUR TARGET AUDIENCE — RESIDENT EVIL STYLE ——— */
+.audience-section {
+  padding: 50px 30px;
+  /* ✅ YOUR BACKGROUND IMAGE — KEPT & UNCHANGED */
+  background: url('bgre.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  position: relative;
+}
+
+/* Dark overlay so text is readable — background still shows through */
+.audience-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 8, 8, 0.78); /* dark maroon tint — background shines through */
+  z-index: 0;
+}
+
+.audience-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ✅ MISSING: Heading with red glow & underline */
+.section-heading {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #ff3333;
+  padding-bottom: 10px;
+  display: inline-block;
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+}
+
+.intro-text {
+  color: #e0c0c0;
+  margin-bottom: 35px;
+  max-width: 900px;
+  line-height: 1.6;
+}
+
+/* ✅ MISSING: Proper list layout */
+.audience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 900px;
+}
+
+/* ✅ MISSING: Card with glowing red left border */
+.audience-item {
+  background-color: rgba(68, 16, 16, 0.85);
+  padding: 20px 25px;
+  border-left: 4px solid #ff3333; /* glowing red line ✨ */
+  border-radius: 4px;
+  box-shadow: inset 0 0 15px rgba(255, 51, 51, 0.1);
+}
+
+/* ✅ MISSING: Number styling (01, 02, 03) */
+.audience-item .number {
+  color: #ff3333;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 8px rgba(255, 51, 51, 0.7);
+}
+
+.audience-item h3 {
+  display: inline;
+  font-size: 1.1rem;
+  color: #ff6666;
+  text-transform: capitalize;
+}
+
+.audience-item p {
+  margin: 10px 0 0 35px;
+  color: #e0c0c0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* ——— VIEWER NEEDS — 4 CARDS — RESIDENT EVIL — */
+.viewer-needs {
+  padding: 60px 30px;
+  background: url('download.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  position: relative;
+}
+
+.viewer-needs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 8, 8, 0.78);
+  z-index: 0;
+}
+
+.viewer-needs > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-heading {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #ff3333;
+  padding-bottom: 10px;
+  display: inline-block;
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+}
+
+.intro-text {
+  color: #e0c0c0;
+  margin-bottom: 35px;
+  max-width: 900px;
+  line-height: 1.6;
+}
+
+.needs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.need-card {
+  background-color: rgba(68, 16, 16, 0.85);
+  padding: 25px;
+  border-left: 4px solid #ff3333;
+  border-radius: 4px;
+  box-shadow: inset 0 0 15px rgba(255, 51, 51, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.need-card:hover {
+  transform: translateY(-5px);
+}
+
+.need-card .num {
+  color: #ff3333;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-shadow: 0 0 8px rgba(255, 51, 51, 0.7);
+}
+
+.need-card h3 {
+  color: #ff6666;
+  margin: 10px 0 12px;
+  font-size: 1.1rem;
+}
+
+.need-card p {
+  color: #e0c0c0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .needs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .needs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================================
+   CHARACTERISTICS OF A GOOD STREAM
+   ================================== */
+.good-stream {
+  padding: 50px 30px;
+  background: url('download.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  width: 100%; /* ✅ full width container */
+  box-sizing: border-box; /* ✅ keeps padding inside */
+}
+
+.good-stream::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 8, 8, 0.78);
+  z-index: 0;
+}
+
+.good-stream > * {
+  position: relative;
+  z-index: 1;
+  text-align: center; /* ✅ centers heading + intro text */
+}
+
+.good-stream .section-heading,
+.good-stream .intro-text {
+  text-align: center !important;
+}
+
+.good-stream .section-heading {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #ff3333;
+  padding-bottom: 10px;
+  /* ✅ DELETE the line: display: inline-block; */
+  display: block; /* ✅ ADD THIS INSTEAD */
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+}
+
+.good-stream .intro-text {
+  color: #e0c0c0;
+  margin-bottom: 35px;
+}
+
+.stream-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 25px !important;
+  width: 85% !important;
+  max-width: 850px !important;
+  margin: 30px auto !important;
+  margin-left: auto !important;   /* ✅ KEEP — centers it */
+  margin-right: auto !important;  /* ✅ KEEP — centers it */
+  padding: 0 !important;
+  float: none !important;
+  clear: both !important;
+  position: relative !important;
+  left: 0 !important;   /* ✅ CHANGE from auto → 0 */
+  right: 0 !important;  /* ✅ CHANGE from auto → 0 */
+  transform: none !important;
+  justify-items: stretch !important; /* ✅ ADD THIS */
+}
+
+.stream-card {
+  background-color: rgba(68, 16, 16, 0.85);
+  padding: 22px 25px;
+  border-left: 4px solid #ff3333;
+  border-radius: 4px;
+}
+
+.stream-card .number {
+  color: #ff3333;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 8px rgba(255, 51, 51, 0.7);
+}
+
+.stream-card h3 {
+  display: inline;
+  font-size: 1.1rem;
+  color: #ff6666;
+}
+
+.stream-card p {
+  margin: 10px 0 0 35px;
+  color: #e0c0c0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* RESPONSIVE — Phones: 1 card per row */
+@media (max-width: 600px) {
+  .stream-grid {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
+}
+
+/* ===== RESEARCH JOURNEY — DARK MAROON RESIDENT EVIL STYLE ===== */
+
+.research-journey {
+  padding: 50px 30px;
+  background-color: #1a0a0a;
+  background-image: linear-gradient(rgba(26, 10, 10, 0.85), rgba(38, 14, 14, 0.9));
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+}
+
+.rj-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.rj-image-box {
+  border: 3px solid #5c2020;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(92, 32, 32, 0.4);
+}
+
+.rj-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rj-text-box {
+  background-color: rgba(60, 20, 20, 0.7);
+  border: 3px solid #5c2020;
+  border-radius: 6px;
+  padding: 35px 30px;
+  color: #e0c8c8;
+  box-shadow: 0 0 20px rgba(92, 32, 32, 0.4);
+}
+
+.rj-heading {
+  color: #d49090;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #5c2020;
+  padding-bottom: 10px;
+}
+
+.rj-text {
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #e8d4d4;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE — Stack on phones ===== */
+@media (max-width: 768px) {
+  .rj-container {
+    grid-template-columns: 1fr;
+  }
+}
